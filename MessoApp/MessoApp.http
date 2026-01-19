@@ -1,0 +1,6 @@
+@MessoApp_HostAddress = http://localhost:5287
+
+GET {{MessoApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
