@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MessoApp.Repository\MessoApp.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

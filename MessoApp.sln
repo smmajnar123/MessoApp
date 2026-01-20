@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4 d17.14
+VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp", "MessoApp\MessoApp.csproj", "{EB6CDF9F-0C67-4BC7-A0D0-A1843FBB24E4}"
 EndProject
@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Mapper", "MessoApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Helper", "MessoApp.Helper\MessoApp.Helper.csproj", "{230724CE-CD67-4F3E-873A-2DE1C3576741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DbScripts", "MessoApp.DbScripts\MessoApp.DbScripts.csproj", "{46707C95-C6B1-4C4F-8F20-EB9A8B6421B7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DTO", "MessoApp.DTO\MessoApp.DTO.csproj", "{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DbScript", "MessoApp.DbScript\MessoApp.DbScript.csproj", "{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,14 +49,14 @@ Global
 		{230724CE-CD67-4F3E-873A-2DE1C3576741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230724CE-CD67-4F3E-873A-2DE1C3576741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{230724CE-CD67-4F3E-873A-2DE1C3576741}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46707C95-C6B1-4C4F-8F20-EB9A8B6421B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46707C95-C6B1-4C4F-8F20-EB9A8B6421B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46707C95-C6B1-4C4F-8F20-EB9A8B6421B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46707C95-C6B1-4C4F-8F20-EB9A8B6421B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
