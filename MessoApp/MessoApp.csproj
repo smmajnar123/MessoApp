@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessoApp.Db\MessoApp.Db.csproj" />
+    <ProjectReference Include="..\MessoApp.Helper\MessoApp.Helper.csproj" />
+    <ProjectReference Include="..\MessoApp.Services\MessoApp.Services.csproj" />
   </ItemGroup>
 
 </Project>

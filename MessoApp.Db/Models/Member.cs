@@ -37,7 +37,9 @@ public partial class Member
 
     public int? ExtraLunchDays { get; set; }
 
-    public virtual ICollection<MemberTransaction> MemberTransactions { get; set; } = new List<MemberTransaction>();
+    public DateOnly? Dob { get; set; }
+
+    public virtual ICollection<MemberTransaction> MemberTransactions { get; set; } = [];
 
     public virtual Mess Mess { get; set; } = null!;
 }

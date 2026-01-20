@@ -25,5 +25,5 @@ public partial class Mess
 
     public virtual Admin Admin { get; set; } = null!;
 
-    public virtual ICollection<Member> Members { get; set; } = new List<Member>();
+    public virtual ICollection<Member> Members { get; set; } = [];
 }

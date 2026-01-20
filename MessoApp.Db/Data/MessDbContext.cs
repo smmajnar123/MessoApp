@@ -30,7 +30,7 @@ public partial class MessDbContext : DbContext
     {
         modelBuilder.Entity<Admin>(entity =>
         {
-            entity.HasKey(e => e.AdminId).HasName("PK__Admins__719FE488445AA774");
+            entity.HasKey(e => e.AdminId).HasName("PK__Admins__719FE488B3CFD140");
 
             entity.Property(e => e.Address)
                 .HasMaxLength(200)
@@ -64,7 +64,7 @@ public partial class MessDbContext : DbContext
 
         modelBuilder.Entity<AdminSubscriptionPayment>(entity =>
         {
-            entity.HasKey(e => e.SubscriptionPaymentId).HasName("PK__AdminSub__8BE6C43B2B27ABC9");
+            entity.HasKey(e => e.SubscriptionPaymentId).HasName("PK__AdminSub__8BE6C43BB5935166");
 
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.EndDate).HasDefaultValueSql("(dateadd(day,(30),getdate()))");
@@ -97,7 +97,7 @@ public partial class MessDbContext : DbContext
 
         modelBuilder.Entity<Member>(entity =>
         {
-            entity.HasKey(e => e.MemberId).HasName("PK__Members__0CF04B18229BB742");
+            entity.HasKey(e => e.MemberId).HasName("PK__Members__0CF04B18AC1D39A2");
 
             entity.Property(e => e.Address)
                 .HasMaxLength(200)
@@ -143,7 +143,7 @@ public partial class MessDbContext : DbContext
 
         modelBuilder.Entity<MemberTransaction>(entity =>
         {
-            entity.HasKey(e => e.MemberTransactionId).HasName("PK__MemberTr__5A28B3B4924D1318");
+            entity.HasKey(e => e.MemberTransactionId).HasName("PK__MemberTr__5A28B3B4061BB2C0");
 
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.PaymentMode)
@@ -169,7 +169,7 @@ public partial class MessDbContext : DbContext
 
         modelBuilder.Entity<Mess>(entity =>
         {
-            entity.HasKey(e => e.MessId).HasName("PK__Messes__9CC50CDD17624153");
+            entity.HasKey(e => e.MessId).HasName("PK__Messes__9CC50CDD81FB9F5B");
 
             entity.Property(e => e.ActiveMemberCount).HasDefaultValue(0);
             entity.Property(e => e.InActiveMemberCount).HasDefaultValue(0);

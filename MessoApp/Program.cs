@@ -1,11 +1,26 @@
 using MessoApp.Db.Data;
+using MessoApp.Helper.Extensions;
+using MessoApp.Repository.IRepository;
+using MessoApp.Repository.Repository;
+using MessoApp.Services.IServices;
+using MessoApp.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<MessDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Add services using extension
+builder.Services.AddMessoAppServices(builder.Configuration);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("*",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -22,6 +37,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("*");
 
 app.UseAuthorization();
 

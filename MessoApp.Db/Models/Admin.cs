@@ -31,7 +31,9 @@ public partial class Admin
 
     public int? SubscriptionRemainingDays { get; set; }
 
-    public virtual ICollection<AdminSubscriptionPayment> AdminSubscriptionPayments { get; set; } = new List<AdminSubscriptionPayment>();
+    public DateOnly? Dob { get; set; }
 
-    public virtual ICollection<Mess> Messes { get; set; } = new List<Mess>();
+    public virtual ICollection<AdminSubscriptionPayment> AdminSubscriptionPayments { get; set; } = [];
+
+    public virtual ICollection<Mess> Messes { get; set; } = [];
 }
