@@ -26,9 +26,6 @@ public partial class MessDbContext : DbContext
 
     public virtual DbSet<Mess> Messes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=GJSHD-0520\\SQLEXPRESS;Database=TestMessDb;Trusted_Connection=True;TrustServerCertificate=True;");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>

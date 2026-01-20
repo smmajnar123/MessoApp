@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\MessoApp.Db\MessoApp.Db.csproj" />
   </ItemGroup>
 
 </Project>
