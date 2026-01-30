@@ -13,17 +13,15 @@ public partial class Mess
 
     public string? MessAddress { get; set; }
 
-    public string? MessGender { get; set; }
+    public string? MessMobile { get; set; }
 
-    public int? MembersCount { get; set; }
-
-    public int? ActiveMemberCount { get; set; }
-
-    public int? InActiveMemberCount { get; set; }
+    public string? MessEmail { get; set; }
 
     public bool? IsActive { get; set; }
 
     public virtual Admin Admin { get; set; } = null!;
 
-    public virtual ICollection<Member> Members { get; set; } = [];
+    public virtual ICollection<MemberMessDetail> MemberMessDetails { get; set; } = new List<MemberMessDetail>();
+
+    public virtual ICollection<MemberTransaction> MemberTransactions { get; set; } = new List<MemberTransaction>();
 }

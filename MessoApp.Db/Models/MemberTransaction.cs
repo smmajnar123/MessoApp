@@ -7,11 +7,13 @@ public partial class MemberTransaction
 {
     public int MemberTransactionId { get; set; }
 
-    public int MemberId { get; set; }
+    public int MemberMessDetailId { get; set; }
 
-    public DateTime? TransactionDate { get; set; }
+    public int MessId { get; set; }
 
-    public decimal Amount { get; set; }
+    public DateTime TransactionDate { get; set; }
+
+    public decimal? Amount { get; set; }
 
     public string? PaymentMode { get; set; }
 
@@ -19,5 +21,11 @@ public partial class MemberTransaction
 
     public string? Remarks { get; set; }
 
-    public virtual Member Member { get; set; } = null!;
+    public decimal? TotalPaidAmount { get; set; }
+
+    public decimal? RemainingAmount { get; set; }
+
+    public virtual MemberMessDetail MemberMessDetail { get; set; } = null!;
+
+    public virtual Mess Mess { get; set; } = null!;
 }

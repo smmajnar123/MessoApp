@@ -23,9 +23,6 @@ namespace MessoApp.Repository.Repository
                     MessId = m.MessId,
                     MessName = m.MessName,
                     MessAddress = m.MessAddress,
-                    MembersCount = m.MembersCount,
-                    ActiveMemberCount = m.ActiveMemberCount,
-                    InActiveMemberCount = m.InActiveMemberCount
                 })
                 .ToListAsync();
         }

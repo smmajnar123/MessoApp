@@ -17,23 +17,11 @@ public partial class Admin
 
     public string? Address { get; set; }
 
-    public int? TotalMemberCount { get; set; }
-
-    public int? TotalActiveMemberCount { get; set; }
-
-    public int? TotalInActiveMemberCount { get; set; }
-
-    public string? Subscription { get; set; }
-
-    public decimal? SubscriptionPrice { get; set; }
-
-    public DateOnly? SubscriptionStartDate { get; set; }
-
-    public int? SubscriptionRemainingDays { get; set; }
-
     public DateOnly? Dob { get; set; }
 
-    public virtual ICollection<AdminSubscriptionPayment> AdminSubscriptionPayments { get; set; } = [];
+    public virtual ICollection<AdminSubscriptionDetail> AdminSubscriptionDetails { get; set; } = new List<AdminSubscriptionDetail>();
 
-    public virtual ICollection<Mess> Messes { get; set; } = [];
+    public virtual ICollection<MemberProfile> MemberProfiles { get; set; } = new List<MemberProfile>();
+
+    public virtual ICollection<Mess> Messes { get; set; } = new List<Mess>();
 }
