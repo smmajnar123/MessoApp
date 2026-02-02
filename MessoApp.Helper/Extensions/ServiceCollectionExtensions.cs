@@ -23,7 +23,6 @@ namespace MessoApp.Helper.Extensions
 
             // Services
             services.AddScoped<IMessService, MessService>();
-            services.AddScoped<IMemberService, MemberService>();
 
             return services;
         }

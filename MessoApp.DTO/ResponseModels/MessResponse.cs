@@ -9,10 +9,10 @@ namespace MessoApp.DTO.ResponseModels
     public class MessResponse
     {
         public int MessId { get; set; }
-        public string MessName { get; set; } = null!;
+        public string MessName { get; set; } = string.Empty;
         public string? MessAddress { get; set; }
-        public int? MembersCount { get; set; }
-        public int? ActiveMemberCount { get; set; }
-        public int? InActiveMemberCount { get; set; }
+        public string? MessMobile { get; set; }
+        public string? MessEmail { get; set; }
+        public bool IsActive { get; set; }
     }
 }

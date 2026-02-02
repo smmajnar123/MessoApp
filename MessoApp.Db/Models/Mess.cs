@@ -17,7 +17,7 @@ public partial class Mess
 
     public string? MessEmail { get; set; }
 
-    public bool? IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual Admin Admin { get; set; } = null!;
 

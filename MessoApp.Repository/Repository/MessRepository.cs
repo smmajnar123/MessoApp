@@ -23,6 +23,9 @@ namespace MessoApp.Repository.Repository
                     MessId = m.MessId,
                     MessName = m.MessName,
                     MessAddress = m.MessAddress,
+                    MessMobile = m.MessMobile,
+                    MessEmail = m.MessEmail,
+                    IsActive = m.IsActive
                 })
                 .ToListAsync();
         }
