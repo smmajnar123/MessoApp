@@ -26,7 +26,7 @@ namespace MessoApp.Repository.Repository
         }
 
 
-        public async Task<int> Add(MemberProfileRequestModel model)
+        public async Task<int> AddAsyn(MemberProfileRequestModel model)
         {
             var entity = MemberProfileMapper.ToEntity(model);
             await _context.MemberProfiles.AddAsync(entity);

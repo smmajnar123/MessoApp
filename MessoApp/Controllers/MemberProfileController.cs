@@ -33,7 +33,7 @@ namespace MessoApp.Controllers
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
         public async Task<IActionResult> Create([FromBody] MemberProfileRequestModel model)
         {
-            var result = await _memberService.Add(model);
+            var result = await _memberService.AddAsyn(model);
 
             return CreatedAtAction(
                 nameof(GetAllAsyn),

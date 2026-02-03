@@ -12,9 +12,9 @@ namespace MessoApp.Services.Services
             return await memberProfileRepository.GetAllAsyn(adminId);
         }
 
-        public async Task<int> Add(MemberProfileRequestModel model)
+        public async Task<int> AddAsyn(MemberProfileRequestModel model)
         {
-            return await memberProfileRepository.Add(model);
+            return await memberProfileRepository.AddAsyn(model);
         }
 
         public async Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model)
