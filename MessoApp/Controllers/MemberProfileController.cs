@@ -1,27 +1,59 @@
 ﻿using MessoApp.DTO.RequestModels;
+using MessoApp.Filters;
 using MessoApp.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessoApp.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/v1/member-profiles")]
     public class MemberProfileController(IMemberProfileService memberService, ILogger<MemberProfileController> logger) : ControllerBase
     {
         private readonly IMemberProfileService _memberService = memberService;
         private readonly ILogger<MemberProfileController> _logger = logger;
 
-        [HttpGet("AllMemberProfiles")]
-        public async Task<IActionResult> GetAllMemberProfiles([FromQuery] int adminId)
+        /// <summary>
+        /// Get all member profiles for an admin
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsyn([FromQuery] int adminId)
         {
-            var result = await _memberService.GetAll(adminId);
+            if (adminId <= 0)
+                return BadRequest("adminId must be greater than zero.");
+
+            var result = await _memberService.GetAllAsyn(adminId);
             return Ok(result);
         }
 
+        /// <summary>
+        /// Create a new member profile
+        /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Post(MemberProfileRequestModel model)
+        // If using validation filter:
+        [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
+        public async Task<IActionResult> Create([FromBody] MemberProfileRequestModel model)
         {
             var result = await _memberService.Add(model);
+
+            return CreatedAtAction(
+                nameof(GetAllAsyn),
+                new { adminId = model.AdminId },
+                result);
+        }
+
+        /// <summary>
+        /// UpdateAsyn an existing member profile
+        /// </summary>
+        [HttpPut("{profileId:int}")]
+        [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
+        public async Task<IActionResult> UpdateAsyn(
+            int profileId,
+            [FromBody] MemberProfileRequestModel model)
+        {
+            if (profileId <= 0)
+                return BadRequest("profileId must be greater than zero.");
+
+            var result = await _memberService.UpdateAsyn(profileId, model);
             return Ok(result);
         }
     }

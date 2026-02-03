@@ -10,7 +10,8 @@ namespace MessoApp.Services.IServices
 {
     public interface IMemberProfileService
     {
-        Task<List<MemberProfileResponseModel>> GetAll(int adminId);
+        Task<List<MemberProfileResponseModel>> GetAllAsyn(int adminId);
         Task<int> Add(MemberProfileRequestModel model);
+        Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model);
     }
 }

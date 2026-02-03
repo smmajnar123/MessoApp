@@ -9,6 +9,6 @@ namespace MessoApp.Services.IServices
 {
     public interface IMessService
     {
-        Task<List<MessResponse>> GetAllMessByAdminIdAsync(int adminId);
+        Task<List<MessResponse>> GetAllAsyn(int adminId);
     }
 }

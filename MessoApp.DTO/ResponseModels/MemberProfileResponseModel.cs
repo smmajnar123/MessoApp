@@ -13,8 +13,7 @@ namespace MessoApp.DTO.ResponseModels
         public string? MobileNumber { get; set; }
         public string? EmailId { get; set; }
         public string? Gender { get; set; }
-        public string? Address { get; set; }
+        public string? AddAsynress { get; set; }
         public DateOnly? Dob { get; set; }
-        public int AdminId { get; set; }
     }
 }

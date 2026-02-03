@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessoApp.Db\MessoApp.Db.csproj" />
-    <ProjectReference Include="..\MessoApp.DTO\MessoApp.DTO.csproj" />
-    <ProjectReference Include="..\MessoApp.Mapper\MessoApp.Mapper.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessoApp.Validators\MessoApp.Validators.csproj" />
   </ItemGroup>
 
 </Project>

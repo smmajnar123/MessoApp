@@ -14,7 +14,7 @@ namespace MessoApp.Repository.Repository
     {
         private readonly MessDbContext _context = context;
 
-        public async Task<List<MessResponse>> GetAllMessByAdminIdAsync(int adminId)
+        public async Task<List<MessResponse>> GetAllAsyn(int adminId)
         {
             return await _context.Messes
                 .Where(m => m.Admin.AdminId == adminId)
@@ -22,7 +22,7 @@ namespace MessoApp.Repository.Repository
                 {
                     MessId = m.MessId,
                     MessName = m.MessName,
-                    MessAddress = m.MessAddress,
+                    MessAddAsynress = m.MessAddAsynress,
                     MessMobile = m.MessMobile,
                     MessEmail = m.MessEmail,
                     IsActive = m.IsActive

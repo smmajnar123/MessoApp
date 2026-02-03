@@ -10,7 +10,7 @@ namespace MessoApp.DTO.ResponseModels
     {
         public int MessId { get; set; }
         public string MessName { get; set; } = string.Empty;
-        public string? MessAddress { get; set; }
+        public string? MessAddAsynress { get; set; }
         public string? MessMobile { get; set; }
         public string? MessEmail { get; set; }
         public bool IsActive { get; set; }

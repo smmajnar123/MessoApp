@@ -9,7 +9,7 @@ CREATE TABLE dbo.Admins
     MobileNumber NVARCHAR(50),
     EmailId NVARCHAR(100),
     Gender NVARCHAR(10),
-    Address NVARCHAR(500),
+    AddAsynress NVARCHAR(500),
     Dob DATE
 );
 GO
@@ -24,7 +24,7 @@ CREATE TABLE dbo.MemberProfiles
     MobileNumber NVARCHAR(50),
     EmailId NVARCHAR(100),
     Gender NVARCHAR(10),
-    Address NVARCHAR(500),
+    AddAsynress NVARCHAR(500),
     Dob DATE,
     AdminId INT NOT NULL,
     CONSTRAINT FK_MemberProfiles_Admins FOREIGN KEY (AdminId)
@@ -40,7 +40,7 @@ CREATE TABLE dbo.Messes
     MessId INT IDENTITY(1,1) CONSTRAINT PK_Messes PRIMARY KEY,
     AdminId INT NOT NULL,
     MessName NVARCHAR(100) NOT NULL,
-    MessAddress NVARCHAR(200),
+    MessAddAsynress NVARCHAR(200),
     MessMobile NVARCHAR(50),
     MessEmail NVARCHAR(100),
     IsActive BIT DEFAULT 1,
@@ -109,7 +109,7 @@ CREATE TABLE dbo.AdminSubscriptionDetails
     PaymentMode NVARCHAR(20) NOT NULL CONSTRAINT DF_AdminSubscription_PaymentMode DEFAULT 'UPI',
     PaymentStatus NVARCHAR(20) NOT NULL CONSTRAINT DF_AdminSubscription_PaymentStatus DEFAULT 'Paid',
     StartDate DATE NOT NULL CONSTRAINT DF_AdminSubscription_StartDate DEFAULT CAST(GETDATE() AS DATE),
-    EndDate DATE NOT NULL CONSTRAINT DF_AdminSubscription_EndDate DEFAULT CAST(DATEADD(DAY, 30, GETDATE()) AS DATE),
+    EndDate DATE NOT NULL CONSTRAINT DF_AdminSubscription_EndDate DEFAULT CAST(DATEAddAsyn(DAY, 30, GETDATE()) AS DATE),
     Remarks NVARCHAR(200),
     CONSTRAINT FK_AdminSubscriptionDetails_Admins FOREIGN KEY (AdminId)
         REFERENCES dbo.Admins(AdminId)
@@ -124,7 +124,7 @@ PRINT '🚀 Ready for fresh data';
 ---------------------------------------------------
 -- Insert sample Admins
 ---------------------------------------------------
-INSERT INTO dbo.Admins (AdminName, MobileNumber, EmailId, Gender, Address, Dob)
+INSERT INTO dbo.Admins (AdminName, MobileNumber, EmailId, Gender, AddAsynress, Dob)
 VALUES 
 ('Neha Sharma', '9876543210', 'neha.sharma@example.com', 'Female', '123 Main Street, City', '1990-05-10'),
 ('Ravi Kumar', '9123456780', 'ravi.kumar@example.com', 'Male', '456 Elm Street, City', '1985-11-22');
@@ -132,7 +132,7 @@ VALUES
 ---------------------------------------------------
 -- Insert sample Messes
 ---------------------------------------------------
-INSERT INTO dbo.Messes (AdminId, MessName, MessAddress, MessMobile, MessEmail, IsActive)
+INSERT INTO dbo.Messes (AdminId, MessName, MessAddAsynress, MessMobile, MessEmail, IsActive)
 VALUES 
 (1, 'City Center Mess', '101 City Plaza, City', '9998887776', 'citycenter@example.com', 1),
 (2, 'Green Garden Mess', '202 Green Lane, City', '8887776665', 'greengarden@example.com', 1);
@@ -140,7 +140,7 @@ VALUES
 ---------------------------------------------------
 -- Insert sample MemberProfiles
 ---------------------------------------------------
-INSERT INTO dbo.MemberProfiles (MemberName, MobileNumber, EmailId, Gender, Address, Dob, AdminId)
+INSERT INTO dbo.MemberProfiles (MemberName, MobileNumber, EmailId, Gender, AddAsynress, Dob, AdminId)
 VALUES
 ('John Doe', '9001122334', 'john.doe@example.com', 'Male', '12 Baker Street, City', '1995-03-15', 1),
 ('Priya Singh', '9011223344', 'priya.singh@example.com', 'Female', '34 Rose Avenue, City', '1998-07-20', 1),
@@ -169,8 +169,8 @@ VALUES
 ---------------------------------------------------
 INSERT INTO dbo.AdminSubscriptionDetails (AdminId, PaymentDate, Amount, SubscriptionPlan, PlanDurationDays, PaymentMode, PaymentStatus, StartDate, EndDate, Remarks)
 VALUES
-(1, GETDATE(), 5000.00, 'Monthly', 30, 'UPI', 'Paid', CAST(GETDATE() AS DATE), CAST(DATEADD(DAY, 30, GETDATE()) AS DATE), 'Monthly subscription for January'),
-(2, GETDATE(), 10000.00, 'Monthly', 30, 'Cash', 'Paid', CAST(GETDATE() AS DATE), CAST(DATEADD(DAY, 30, GETDATE()) AS DATE), 'Monthly subscription for January');
+(1, GETDATE(), 5000.00, 'Monthly', 30, 'UPI', 'Paid', CAST(GETDATE() AS DATE), CAST(DATEAddAsyn(DAY, 30, GETDATE()) AS DATE), 'Monthly subscription for January'),
+(2, GETDATE(), 10000.00, 'Monthly', 30, 'Cash', 'Paid', CAST(GETDATE() AS DATE), CAST(DATEAddAsyn(DAY, 30, GETDATE()) AS DATE), 'Monthly subscription for January');
 
 ---------------------------------------------------
 PRINT '✅ Sample data inserted successfully';

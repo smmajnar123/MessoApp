@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessoApp.Db\MessoApp.Db.csproj" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MessoApp.DTO\MessoApp.DTO.csproj" />
-    <ProjectReference Include="..\MessoApp.Mapper\MessoApp.Mapper.csproj" />
   </ItemGroup>
 
 </Project>

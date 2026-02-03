@@ -12,9 +12,9 @@ namespace MessoApp.Controllers
         private readonly ILogger<MessController> _logger = logger;
 
         [HttpGet("allMessess")]
-        public async Task<IActionResult> GetAllMessess([FromQuery] int adminId)
+        public async Task<IActionResult> GetAllAsyn([FromQuery] int adminId)
         {
-            var result = await _messService.GetAllMessByAdminIdAsync(adminId);
+            var result = await _messService.GetAllAsyn(adminId);
             return Ok(result);
         }
     }

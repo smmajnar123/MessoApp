@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DTO", "MessoApp.DT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DbScript", "MessoApp.DbScript\MessoApp.DbScript.csproj", "{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Validators", "MessoApp.Validators\MessoApp.Validators.csproj", "{9AC3F900-F3A3-463D-BE42-81856220DBF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Filters", "MessoApp.Filters\MessoApp.Filters.csproj", "{8669B148-AA11-4B7D-BC9A-22574EE9380A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E473E3D3-6E89-4484-A2B6-D24F58F5C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC3F900-F3A3-463D-BE42-81856220DBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC3F900-F3A3-463D-BE42-81856220DBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC3F900-F3A3-463D-BE42-81856220DBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC3F900-F3A3-463D-BE42-81856220DBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8669B148-AA11-4B7D-BC9A-22574EE9380A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8669B148-AA11-4B7D-BC9A-22574EE9380A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8669B148-AA11-4B7D-BC9A-22574EE9380A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8669B148-AA11-4B7D-BC9A-22574EE9380A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

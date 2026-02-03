@@ -2,6 +2,7 @@
 using MessoApp.Db.Models;
 using MessoApp.DTO.RequestModels;
 using MessoApp.DTO.ResponseModels;
+using MessoApp.Mapper;
 using MessoApp.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,40 +17,33 @@ namespace MessoApp.Repository.Repository
     {
         private readonly MessDbContext _context = context;
 
-        public async Task<List<MemberProfileResponseModel>> GetAll(int adminId)
+        public async Task<List<MemberProfileResponseModel>> GetAllAsyn(int adminId)
         {
             return await _context.MemberProfiles
-                .Where(mp => mp.AdminId == adminId)   // ✅ FILTER
-                .Select(mp => new MemberProfileResponseModel
-                {
-                    ProfileId = mp.ProfileId,
-                    MemberName = mp.MemberName,
-                    MobileNumber = mp.MobileNumber,
-                    EmailId = mp.EmailId,
-                    Gender = mp.Gender,
-                    Address = mp.Address,
-                    Dob = mp.Dob
-                })
+                .Where(mp => mp.AdminId == adminId)
+                .Select(mp => MemberProfileMapper.ToResponse(mp))
                 .ToListAsync();
         }
 
 
         public async Task<int> Add(MemberProfileRequestModel model)
         {
-            var entity = new MemberProfile
-            {
-                MemberName = model.MemberName,
-                MobileNumber = model.MobileNumber,
-                EmailId = model.EmailId,
-                Gender = model.Gender,
-                Address = model.Address,
-                Dob = model.Dob,
-                AdminId = model.AdminId
-            };
-
+            var entity = MemberProfileMapper.ToEntity(model);
             await _context.MemberProfiles.AddAsync(entity);
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model)
+        {
+            var entity = await _context.MemberProfiles.FirstOrDefaultAsync(mp => mp.ProfileId == profileId && mp.AdminId == model.AdminId)
+                ?? throw new KeyNotFoundException("Member profile not found.");
+            entity.MemberName = model.MemberName;
+            entity.MobileNumber = model.MobileNumber;
+            entity.EmailId = model.EmailId;
+            entity.Gender = model.Gender;
+            entity.AddAsynress = model.AddAsynress;
+            entity.Dob = model.Dob;
+            return await _context.SaveChangesAsync();
+        }
     }
 }

@@ -6,6 +6,11 @@ using MessoApp.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MessoApp.Filters;
+// Add the following using if FluentValidation is referenced in your project
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MessoApp.Validators.RequestValidator;
 
 namespace MessoApp.Helper.Extensions
 {
@@ -15,8 +20,11 @@ namespace MessoApp.Helper.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            // DbContext
             services.AddDbContext<MessDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            //validation
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<MemberProfileRequestValidator>();
+            services.AddScoped(typeof(FluentValidationFilter<>));
 
             // Repositories
             services.AddScoped<IMessRepository, MessRepository>();

@@ -15,7 +15,7 @@ public partial class MemberProfile
 
     public string? Gender { get; set; }
 
-    public string? Address { get; set; }
+    public string? AddAsynress { get; set; }
 
     public DateOnly? Dob { get; set; }
 

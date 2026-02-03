@@ -4,6 +4,6 @@ namespace MessoApp.Repository.IRepository
 {
     public interface IMessRepository
     {
-        Task<List<MessResponse>> GetAllMessByAdminIdAsync(int adminId);
+        Task<List<MessResponse>> GetAllAsyn(int adminId);
     }
 }

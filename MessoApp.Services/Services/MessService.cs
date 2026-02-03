@@ -13,9 +13,9 @@ namespace MessoApp.Services.Services
     {
         private readonly IMessRepository _messRepository = messRepository;
 
-        public async Task<List<MessResponse>> GetAllMessByAdminIdAsync(int adminId)
+        public async Task<List<MessResponse>> GetAllAsyn(int adminId)
         {
-            return await _messRepository.GetAllMessByAdminIdAsync(adminId);
+            return await _messRepository.GetAllAsyn(adminId);
         }
     }
 }

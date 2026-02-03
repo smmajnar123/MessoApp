@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MessoApp.Db\MessoApp.Db.csproj" />
+    <ProjectReference Include="..\MessoApp.DTO\MessoApp.DTO.csproj" />
+  </ItemGroup>
+
 </Project>
