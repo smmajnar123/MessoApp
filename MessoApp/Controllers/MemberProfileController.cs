@@ -12,9 +12,7 @@ namespace MessoApp.Controllers
         private readonly IMemberProfileService _memberService = memberService;
         private readonly ILogger<MemberProfileController> _logger = logger;
 
-        /// <summary>
-        /// Get all member profiles for an admin
-        /// </summary>
+
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] int adminId)
         {
@@ -25,11 +23,7 @@ namespace MessoApp.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Create a new member profile
-        /// </summary>
         [HttpPost]
-        // If using validation filter:
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
         public async Task<IActionResult> Create([FromBody] MemberProfileRequestModel model)
         {
@@ -41,9 +35,6 @@ namespace MessoApp.Controllers
                 result);
         }
 
-        /// <summary>
-        /// UpdateAsyn an existing member profile
-        /// </summary>
         [HttpPut("{profileId:int}")]
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
         public async Task<IActionResult> Update(
