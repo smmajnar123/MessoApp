@@ -35,7 +35,7 @@ public partial class MessDbContext : DbContext
     {
         modelBuilder.Entity<Admin>(entity =>
         {
-            entity.Property(e => e.AddAsynress).HasMaxLength(500);
+            entity.Property(e => e.Address).HasMaxLength(500);
             entity.Property(e => e.AdminName).HasMaxLength(200);
             entity.Property(e => e.EmailId).HasMaxLength(100);
             entity.Property(e => e.Gender).HasMaxLength(10);
@@ -91,7 +91,7 @@ public partial class MessDbContext : DbContext
         {
             entity.HasKey(e => e.ProfileId);
 
-            entity.Property(e => e.AddAsynress).HasMaxLength(500);
+            entity.Property(e => e.Address).HasMaxLength(500);
             entity.Property(e => e.EmailId).HasMaxLength(100);
             entity.Property(e => e.Gender).HasMaxLength(10);
             entity.Property(e => e.MemberName).HasMaxLength(200);
@@ -133,7 +133,7 @@ public partial class MessDbContext : DbContext
         modelBuilder.Entity<Mess>(entity =>
         {
             entity.Property(e => e.IsActive).HasDefaultValue(true);
-            entity.Property(e => e.MessAddAsynress).HasMaxLength(200);
+            entity.Property(e => e.MessAddress).HasMaxLength(200);
             entity.Property(e => e.MessEmail).HasMaxLength(100);
             entity.Property(e => e.MessMobile).HasMaxLength(50);
             entity.Property(e => e.MessName).HasMaxLength(100);

@@ -16,7 +16,7 @@ namespace MessoApp.Controllers
         /// Get all member profiles for an admin
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> GetAllAsyn([FromQuery] int adminId)
+        public async Task<IActionResult> Get([FromQuery] int adminId)
         {
             if (adminId <= 0)
                 return BadRequest("adminId must be greater than zero.");
@@ -36,7 +36,7 @@ namespace MessoApp.Controllers
             var result = await _memberService.AddAsyn(model);
 
             return CreatedAtAction(
-                nameof(GetAllAsyn),
+                nameof(Get),
                 new { adminId = model.AdminId },
                 result);
         }
@@ -46,7 +46,7 @@ namespace MessoApp.Controllers
         /// </summary>
         [HttpPut("{profileId:int}")]
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
-        public async Task<IActionResult> UpdateAsyn(
+        public async Task<IActionResult> Update(
             int profileId,
             [FromBody] MemberProfileRequestModel model)
         {

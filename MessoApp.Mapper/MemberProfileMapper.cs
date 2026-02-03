@@ -22,7 +22,7 @@ namespace MessoApp.Mapper
                 MobileNumber = model.MobileNumber,
                 EmailId = model.EmailId,
                 Gender = model.Gender,
-                AddAsynress = model.AddAsynress,
+                Address = model.Address,
                 Dob = model.Dob,
                 AdminId = model.AdminId
             };
@@ -40,9 +40,20 @@ namespace MessoApp.Mapper
                 MobileNumber = entity.MobileNumber,
                 EmailId = entity.EmailId,
                 Gender = entity.Gender,
-                AddAsynress = entity.AddAsynress,
+                Address = entity.Address,
                 Dob = entity.Dob,
             };
         }
+
+        public static void UpdateEntity(MemberProfile entity, MemberProfileRequestModel model)
+        {
+            entity.MemberName = model.MemberName.Trim();
+            entity.MobileNumber = model.MobileNumber.Trim();
+            entity.EmailId = model.EmailId.Trim();
+            entity.Gender = model.Gender;
+            entity.Address = model.Address?.Trim();
+            entity.Dob = model.Dob;
+        }
+
     }
 }

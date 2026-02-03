@@ -36,13 +36,8 @@ namespace MessoApp.Repository.Repository
         public async Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model)
         {
             var entity = await _context.MemberProfiles.FirstOrDefaultAsync(mp => mp.ProfileId == profileId && mp.AdminId == model.AdminId)
-                ?? throw new KeyNotFoundException("Member profile not found.");
-            entity.MemberName = model.MemberName;
-            entity.MobileNumber = model.MobileNumber;
-            entity.EmailId = model.EmailId;
-            entity.Gender = model.Gender;
-            entity.AddAsynress = model.AddAsynress;
-            entity.Dob = model.Dob;
+            ?? throw new KeyNotFoundException("Member profile not found.");
+            MemberProfileMapper.UpdateEntity(entity, model);
             return await _context.SaveChangesAsync();
         }
     }

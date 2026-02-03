@@ -1,4 +1,5 @@
-﻿using MessoApp.DTO.ResponseModels;
+﻿using MessoApp.DTO.RequestModels;
+using MessoApp.DTO.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace MessoApp.Services.IServices
     public interface IMessService
     {
         Task<List<MessResponse>> GetAllAsyn(int adminId);
+
+        Task<int> AddAsyn(MessRequestModel model);
+
+        Task<int> UpdateAsyn(int messId, MessRequestModel model);
     }
 }

@@ -24,6 +24,7 @@ namespace MessoApp.Helper.Extensions
             //validation
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<MemberProfileRequestValidator>();
+            services.AddValidatorsFromAssemblyContaining<MessRequestValidator>();
             services.AddScoped(typeof(FluentValidationFilter<>));
 
             // Repositories

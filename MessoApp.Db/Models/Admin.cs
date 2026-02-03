@@ -15,7 +15,7 @@ public partial class Admin
 
     public string? Gender { get; set; }
 
-    public string? AddAsynress { get; set; }
+    public string? Address { get; set; }
 
     public DateOnly? Dob { get; set; }
 

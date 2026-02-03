@@ -11,7 +11,7 @@ public partial class Mess
 
     public string MessName { get; set; } = null!;
 
-    public string? MessAddAsynress { get; set; }
+    public string? MessAddress { get; set; }
 
     public string? MessMobile { get; set; }
 

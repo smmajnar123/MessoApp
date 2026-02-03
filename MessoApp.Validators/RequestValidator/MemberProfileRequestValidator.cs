@@ -21,7 +21,7 @@ namespace MessoApp.Validators.RequestValidator
             RuleFor(x => x.EmailId)
                 .NotEmpty().WithMessage("Email ID is required.")
                 .EmailAddress().WithMessage("Invalid email AddAsynress format.");
-            RuleFor(x => x.AddAsynress)
+            RuleFor(x => x.Address)
                 .NotEmpty().WithMessage("AddAsynress is required.")
                 .MaximumLength(500).WithMessage("AddAsynress cannot exceed 500 characters.");
             RuleFor(x => x.Gender).NotEmpty().WithMessage("Gender is required.");

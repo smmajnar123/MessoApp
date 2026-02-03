@@ -1,5 +1,8 @@
-﻿using MessoApp.Db.Data;
+﻿using Azure;
+using MessoApp.Db.Data;
+using MessoApp.DTO.RequestModels;
 using MessoApp.DTO.ResponseModels;
+using MessoApp.Mapper;
 using MessoApp.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,20 +17,27 @@ namespace MessoApp.Repository.Repository
     {
         private readonly MessDbContext _context = context;
 
+        public Task<int> AddAsyn(MessRequestModel model)
+        {
+            var entity = MessMapper.ToEntity(model);
+            _context.Messes.AddAsync(entity);
+            return _context.SaveChangesAsync();
+        }
+
         public async Task<List<MessResponse>> GetAllAsyn(int adminId)
         {
             return await _context.Messes
                 .Where(m => m.Admin.AdminId == adminId)
-                .Select(m => new MessResponse
-                {
-                    MessId = m.MessId,
-                    MessName = m.MessName,
-                    MessAddAsynress = m.MessAddAsynress,
-                    MessMobile = m.MessMobile,
-                    MessEmail = m.MessEmail,
-                    IsActive = m.IsActive
-                })
+                .Select(m => MessMapper.ToResponse(m))
                 .ToListAsync();
+        }
+
+        public async Task<int> UpdateAsyn(int messId, MessRequestModel model)
+        {
+            var entity = await _context.Messes.FirstOrDefaultAsync(m => m.MessId == messId && m.AdminId == model.AdminId)
+                ?? throw new KeyNotFoundException("Mess not found.");
+            MessMapper.UpdateEntity(entity, model);
+            return await _context.SaveChangesAsync();
         }
     }
 }
