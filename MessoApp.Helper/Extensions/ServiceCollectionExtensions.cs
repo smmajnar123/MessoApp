@@ -20,9 +20,12 @@ namespace MessoApp.Helper.Extensions
 
             // Repositories
             services.AddScoped<IMessRepository, MessRepository>();
+            services.AddScoped<IMemberProfileRepository, MemberProfileRepository>();
 
             // Services
             services.AddScoped<IMessService, MessService>();
+
+            services.AddScoped<IMemberProfileService, MemberProfileService>();
 
             return services;
         }

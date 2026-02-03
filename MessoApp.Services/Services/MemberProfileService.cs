@@ -12,13 +12,13 @@ namespace MessoApp.Services.Services
 {
     public class MemberProfileService(IMemberProfileRepository memberProfileRepository) : IMemberProfileService
     {
-        public List<MemberProfileResponseModel> GetAll()
+        public async Task<List<MemberProfileResponseModel>> GetAll(int adminId)
         {
-            return memberProfileRepository.GetAll();
+            return await memberProfileRepository.GetAll(adminId);
         }
-        public void Add(MemberProfileRequestModel model)
+        public async Task<int> Add(MemberProfileRequestModel model)
         {
-            memberProfileRepository.Add(model);
+           return await memberProfileRepository.Add(model);
         }
     }
 }

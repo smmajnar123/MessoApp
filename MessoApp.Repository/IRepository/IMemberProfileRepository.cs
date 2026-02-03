@@ -10,7 +10,7 @@ namespace MessoApp.Repository.IRepository
 {
     public interface IMemberProfileRepository
     {
-        List<MemberProfileResponseModel> GetAll();
-        void Add(MemberProfileRequestModel model);
+        Task<List<MemberProfileResponseModel>> GetAll(int adminId);
+        Task<int> Add(MemberProfileRequestModel model);
     }
 }

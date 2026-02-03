@@ -3,6 +3,7 @@ using MessoApp.Db.Models;
 using MessoApp.DTO.RequestModels;
 using MessoApp.DTO.ResponseModels;
 using MessoApp.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,10 @@ namespace MessoApp.Repository.Repository
     {
         private readonly MessDbContext _context = context;
 
-        public List<MemberProfileResponseModel> GetAll()
+        public async Task<List<MemberProfileResponseModel>> GetAll(int adminId)
         {
-            return [.. _context.MemberProfiles
+            return await _context.MemberProfiles
+                .Where(mp => mp.AdminId == adminId)   // ✅ FILTER
                 .Select(mp => new MemberProfileResponseModel
                 {
                     ProfileId = mp.ProfileId,
@@ -26,12 +28,13 @@ namespace MessoApp.Repository.Repository
                     EmailId = mp.EmailId,
                     Gender = mp.Gender,
                     Address = mp.Address,
-                    Dob = mp.Dob,
-                    AdminId = mp.AdminId
-                })];
+                    Dob = mp.Dob
+                })
+                .ToListAsync();
         }
 
-        public void Add(MemberProfileRequestModel model)
+
+        public async Task<int> Add(MemberProfileRequestModel model)
         {
             var entity = new MemberProfile
             {
@@ -44,8 +47,8 @@ namespace MessoApp.Repository.Repository
                 AdminId = model.AdminId
             };
 
-            _context.MemberProfiles.Add(entity);
-            _context.SaveChanges();
+            await _context.MemberProfiles.AddAsync(entity);
+            return await _context.SaveChangesAsync();
         }
 
     }
