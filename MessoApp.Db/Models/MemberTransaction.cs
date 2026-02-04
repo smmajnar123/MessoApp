@@ -21,9 +21,9 @@ public partial class MemberTransaction
 
     public string? Remarks { get; set; }
 
-    public decimal? TotalPaidAmount { get; set; }
+    public decimal TotalPaidAmount { get; set; }
 
-    public decimal? RemainingAmount { get; set; }
+    public decimal RemainingAmount { get; set; }
 
     public virtual MemberMessDetail MemberMessDetail { get; set; } = null!;
 

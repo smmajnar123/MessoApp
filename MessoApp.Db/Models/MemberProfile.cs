@@ -19,6 +19,8 @@ public partial class MemberProfile
 
     public DateOnly? Dob { get; set; }
 
+    public string PasswordHash { get; set; } = null!;
+
     public int AdminId { get; set; }
 
     public virtual Admin Admin { get; set; } = null!;

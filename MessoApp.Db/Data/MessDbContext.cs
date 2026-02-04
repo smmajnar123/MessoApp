@@ -29,17 +29,25 @@ public partial class MessDbContext : DbContext
     public virtual DbSet<Mess> Messes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=GJSHD-0520\\SQLEXPRESS;Initial Catalog=TestMessDb;Integrated Security=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>
         {
+            entity.HasIndex(e => e.EmailId, "UQ_Admins_Email").IsUnique();
+
+            entity.HasIndex(e => e.MobileNumber, "UQ_Admins_Mobile").IsUnique();
+
             entity.Property(e => e.Address).HasMaxLength(500);
             entity.Property(e => e.AdminName).HasMaxLength(200);
             entity.Property(e => e.EmailId).HasMaxLength(100);
             entity.Property(e => e.Gender).HasMaxLength(10);
-            entity.Property(e => e.MobileNumber).HasMaxLength(50);
+            entity.Property(e => e.MobileNumber).HasMaxLength(15);
+            entity.Property(e => e.PasswordHash)
+                .HasMaxLength(500)
+                .HasDefaultValue("");
         });
 
         modelBuilder.Entity<AdminSubscriptionDetail>(entity =>
@@ -47,7 +55,7 @@ public partial class MessDbContext : DbContext
             entity.HasKey(e => e.SubscriptionPaymentId);
 
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.EndDate).HasDefaultValueSql("(CONVERT([date],dateAddAsyn(day,(30),getdate())))");
+            entity.Property(e => e.EndDate).HasDefaultValueSql("(CONVERT([date],dateadd(day,(30),getdate())))");
             entity.Property(e => e.PaymentDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -72,6 +80,9 @@ public partial class MessDbContext : DbContext
 
         modelBuilder.Entity<MemberMessDetail>(entity =>
         {
+            entity.Property(e => e.ExtraTiffinDays).HasDefaultValue(0);
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.LeaveDays).HasDefaultValue(0);
             entity.Property(e => e.MemberCategory).HasMaxLength(50);
             entity.Property(e => e.MessType).HasMaxLength(50);
             entity.Property(e => e.MonthlyPrice).HasColumnType("decimal(18, 2)");
@@ -95,7 +106,10 @@ public partial class MessDbContext : DbContext
             entity.Property(e => e.EmailId).HasMaxLength(100);
             entity.Property(e => e.Gender).HasMaxLength(10);
             entity.Property(e => e.MemberName).HasMaxLength(200);
-            entity.Property(e => e.MobileNumber).HasMaxLength(50);
+            entity.Property(e => e.MobileNumber).HasMaxLength(15);
+            entity.Property(e => e.PasswordHash)
+                .HasMaxLength(500)
+                .HasDefaultValue("");
 
             entity.HasOne(d => d.Admin).WithMany(p => p.MemberProfiles)
                 .HasForeignKey(d => d.AdminId)
@@ -108,13 +122,9 @@ public partial class MessDbContext : DbContext
             entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.PaymentMode).HasMaxLength(50);
             entity.Property(e => e.PaymentStatus).HasMaxLength(50);
-            entity.Property(e => e.RemainingAmount)
-                .HasDefaultValue(0m)
-                .HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.RemainingAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Remarks).HasMaxLength(500);
-            entity.Property(e => e.TotalPaidAmount)
-                .HasDefaultValue(0m)
-                .HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.TotalPaidAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.TransactionDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -135,7 +145,7 @@ public partial class MessDbContext : DbContext
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.MessAddress).HasMaxLength(200);
             entity.Property(e => e.MessEmail).HasMaxLength(100);
-            entity.Property(e => e.MessMobile).HasMaxLength(50);
+            entity.Property(e => e.MessMobile).HasMaxLength(15);
             entity.Property(e => e.MessName).HasMaxLength(100);
 
             entity.HasOne(d => d.Admin).WithMany(p => p.Messes)

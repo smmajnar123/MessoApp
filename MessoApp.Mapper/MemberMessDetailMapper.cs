@@ -19,7 +19,7 @@ namespace MessoApp.Mapper
                 MemberName = entity.Profile.MemberName,
                 MessId = entity.MessId,
                 MessName = entity.Mess.MessName,
-                IsActive = entity.IsActive ?? false,
+                IsActive = entity.IsActive,
                 JoinedDate = entity.JoinedDate,
                 MessType = entity.MessType,
                 MemberCategory = entity.MemberCategory,

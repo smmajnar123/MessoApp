@@ -11,7 +11,7 @@ public partial class MemberMessDetail
 
     public int MessId { get; set; }
 
-    public bool? IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     public DateOnly? JoinedDate { get; set; }
 
