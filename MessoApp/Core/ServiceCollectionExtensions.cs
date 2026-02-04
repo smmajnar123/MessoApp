@@ -1,16 +1,14 @@
-﻿using MessoApp.Db.Data;
+﻿// Add the following using if FluentValidation is referenced in your project
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MessoApp.Db.Data;
+using MessoApp.Filters;
 using MessoApp.Repository.IRepository;
 using MessoApp.Repository.Repository;
 using MessoApp.Services.IServices;
 using MessoApp.Services.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using MessoApp.Filters;
-// Add the following using if FluentValidation is referenced in your project
-using FluentValidation;
-using FluentValidation.AspNetCore;
 using MessoApp.Validators.RequestValidator;
+using Microsoft.EntityFrameworkCore;
 
 namespace MessoApp.Helper.Extensions
 {
@@ -28,11 +26,15 @@ namespace MessoApp.Helper.Extensions
             services.AddScoped(typeof(FluentValidationFilter<>));
 
             // Repositories
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMessRepository, MessRepository>();
             services.AddScoped<IMemberProfileRepository, MemberProfileRepository>();
             services.AddScoped<IMemberMessDetailRepository, MemberMessDetailRepository>();
 
             // Services
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IMessService, MessService>();
             services.AddScoped<IMemberProfileService, MemberProfileService>();
             services.AddScoped<IMemberMessDetailService, MemberMessDetailService>();

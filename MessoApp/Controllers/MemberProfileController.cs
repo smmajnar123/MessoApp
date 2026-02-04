@@ -1,12 +1,14 @@
 ﻿using MessoApp.DTO.RequestModels;
 using MessoApp.Filters;
 using MessoApp.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MessoApp.Controllers
 {
     [ApiController]
-    [Route("api/v1/member-profiles")]
+    [Route("api/v1/member-profiles/")]
     public class MemberProfileController(IMemberProfileService memberService, ILogger<MemberProfileController> logger) : ControllerBase
     {
         private readonly IMemberProfileService _memberService = memberService;
@@ -14,6 +16,7 @@ namespace MessoApp.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get([FromQuery] int adminId)
         {
             if (adminId <= 0)
@@ -25,6 +28,7 @@ namespace MessoApp.Controllers
 
         [HttpPost]
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] MemberProfileRequestModel model)
         {
             var result = await _memberService.AddAsyn(model);
@@ -37,6 +41,7 @@ namespace MessoApp.Controllers
 
         [HttpPut("{profileId:int}")]
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
+         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(
             int profileId,
             [FromBody] MemberProfileRequestModel model)
@@ -46,6 +51,14 @@ namespace MessoApp.Controllers
 
             var result = await _memberService.UpdateAsyn(profileId, model);
             return Ok(result);
+        }
+
+        [HttpGet("profile")]
+        [Authorize("Member")]
+        public async Task<IActionResult> GetMemberProfile()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(new {userIdClaim});
         }
     }
 }

@@ -2,12 +2,14 @@
 using MessoApp.DTO.RequestModels;
 using MessoApp.Filters;
 using MessoApp.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessoApp.Controllers
 {
     [ApiController]
     [Route("api/v1/mess")]
+    [Authorize(Roles = "Admin")]
     public class MessController(IMessService messService, ILogger<MessController> logger) : ControllerBase
     {
         private readonly IMessService _messService = messService;

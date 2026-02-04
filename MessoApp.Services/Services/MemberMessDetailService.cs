@@ -1,4 +1,4 @@
-﻿using MessoApp.DTO.RequestModels;
+﻿using MessoApp.DTO.ResponseModels;
 using MessoApp.Repository.IRepository;
 using MessoApp.Services.IServices;
 using System;

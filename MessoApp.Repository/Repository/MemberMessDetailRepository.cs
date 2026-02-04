@@ -1,5 +1,5 @@
 ﻿using MessoApp.Db.Data;
-using MessoApp.DTO.RequestModels;
+using MessoApp.DTO.ResponseModels;
 using MessoApp.Mapper;
 using MessoApp.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;

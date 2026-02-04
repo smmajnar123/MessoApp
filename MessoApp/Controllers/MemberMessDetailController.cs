@@ -1,4 +1,5 @@
 ﻿using MessoApp.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace MessoApp.Controllers
 {
     [ApiController]
     [Route("api/v1/member-mess-detail")]
+    [Authorize(Roles = "Admin")]
     public class MemberMessDetailController(IMemberMessDetailService memberMessDetailService, ILogger<MemberMessDetailController> logger) : ControllerBase
     {
         private readonly IMemberMessDetailService _memberMessDetailService = memberMessDetailService;

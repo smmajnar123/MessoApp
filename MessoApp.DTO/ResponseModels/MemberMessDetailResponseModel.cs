@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessoApp.DTO.RequestModels
+namespace MessoApp.DTO.ResponseModels
 {
     public class MemberMessDetailResponseModel
     {

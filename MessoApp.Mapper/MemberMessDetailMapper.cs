@@ -1,5 +1,5 @@
 ﻿using MessoApp.Db.Models;
-using MessoApp.DTO.RequestModels;
+using MessoApp.DTO.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
