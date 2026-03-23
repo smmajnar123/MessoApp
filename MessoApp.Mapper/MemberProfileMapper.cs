@@ -14,8 +14,6 @@ namespace MessoApp.Mapper
         // Map RequestModel -> Entity
         public static MemberProfile ToEntity(MemberProfileRequestModel model)
         {
-            if (model == null) return null;
-
             return new MemberProfile
             {
                 MemberName = model.MemberName,
@@ -31,7 +29,7 @@ namespace MessoApp.Mapper
         // Map Entity -> ResponseModel
         public static MemberProfileResponseModel ToResponse(MemberProfile entity)
         {
-            if (entity == null) return null;
+            if (entity == null) return new MemberProfileResponseModel();
 
             return new MemberProfileResponseModel
             {

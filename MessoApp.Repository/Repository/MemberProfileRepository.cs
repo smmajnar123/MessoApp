@@ -25,6 +25,12 @@ namespace MessoApp.Repository.Repository
                 .ToListAsync();
         }
 
+        public async Task<MemberProfileResponseModel?> GetMemberProfileAsyn(int profileId)
+        {
+            return await _context.MemberProfiles.Where(mp => mp.ProfileId == profileId).
+                Select(mp => MemberProfileMapper.ToResponse(mp)).FirstOrDefaultAsync();
+        }
+
 
         public async Task<int> AddAsyn(MemberProfileRequestModel model)
         {

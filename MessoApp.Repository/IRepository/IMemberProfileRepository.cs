@@ -14,5 +14,7 @@ namespace MessoApp.Repository.IRepository
         Task<int> AddAsyn(MemberProfileRequestModel model);
 
         Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model);
+
+        Task<MemberProfileResponseModel?> GetMemberProfileAsyn(int profileId);
     }
 }

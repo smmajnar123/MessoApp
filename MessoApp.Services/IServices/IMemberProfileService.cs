@@ -13,5 +13,7 @@ namespace MessoApp.Services.IServices
         Task<List<MemberProfileResponseModel>> GetAllAsyn(int adminId);
         Task<int> AddAsyn(MemberProfileRequestModel model);
         Task<int> UpdateAsyn(int profileId, MemberProfileRequestModel model);
+
+        Task<MemberProfileResponseModel?> GetMemberProfileAsyn(int profileId);
     }
 }

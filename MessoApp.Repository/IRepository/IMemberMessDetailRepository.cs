@@ -9,6 +9,6 @@ namespace MessoApp.Repository.IRepository
 {
     public interface IMemberMessDetailRepository
     {
-        Task<List<MemberMessDetailResponseModel>> GetAllAsyn(int messId);
+        Task<MemberMessDetailResponseModel?> GetMemberMessDetailsAsync(int profileId);
     }
 }

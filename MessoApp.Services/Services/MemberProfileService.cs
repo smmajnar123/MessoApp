@@ -22,5 +22,10 @@ namespace MessoApp.Services.Services
         {
             return await _memberProfileRepository.UpdateAsyn(profileId, model);
         }
+
+        public async Task<MemberProfileResponseModel?> GetMemberProfileAsyn(int profileId)
+        {
+            return await _memberProfileRepository.GetMemberProfileAsyn(profileId);
+        }
     }
 }

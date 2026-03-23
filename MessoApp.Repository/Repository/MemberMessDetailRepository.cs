@@ -14,15 +14,19 @@ namespace MessoApp.Repository.Repository
     public class MemberMessDetailRepository(MessDbContext context) : IMemberMessDetailRepository
     {
         private readonly MessDbContext _context = context;
-        public async Task<List<MemberMessDetailResponseModel>> GetAllAsyn(int messId)
+        //public async Task<MemberMessDetailResponseModel?> GetMemberMessDetailsAsync(int profileId)
+        //{
+        //    return await _context.MemberMessDetails.AsNoTracking().Where(x => x.ProfileId == profileId)
+        //    .Select(x => MemberMessDetailMapper.ToResponse(x))
+        //    .FirstOrDefaultAsync(); ;
+        //}
+        public async Task<MemberMessDetailResponseModel?> GetMemberMessDetailsAsync(int profileId)
         {
-            var result = await _context.MemberMessDetails.Where(x => x.MessId == messId)
-            .Include(x => x.Profile)
-            .Include(x => x.Mess)
-            .Select(x => MemberMessDetailMapper.ToResponse(x))
-            .ToListAsync();
-
-            return result;
+            return await _context.MemberMessDetails
+                .AsNoTracking()
+                .Where(m => m.ProfileId == profileId)
+                .Select(m=>MemberMessDetailMapper.ToResponse(m))
+                .FirstOrDefaultAsync();   // TOP(1)
         }
     }
 }

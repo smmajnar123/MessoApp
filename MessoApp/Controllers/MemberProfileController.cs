@@ -17,11 +17,13 @@ namespace MessoApp.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Get([FromQuery] int adminId)
+        public async Task<IActionResult> Get()
         {
-            if (adminId <= 0)
-                return BadRequest("adminId must be greater than zero.");
-
+            var adminIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(adminIdClaim, out int adminId) || adminId <= 0)
+            {
+                return BadRequest("Invalid or missing adminId.");
+            }
             var result = await _memberService.GetAllAsyn(adminId);
             return Ok(result);
         }
@@ -41,10 +43,8 @@ namespace MessoApp.Controllers
 
         [HttpPut("{profileId:int}")]
         [ServiceFilter(typeof(FluentValidationFilter<MemberProfileRequestModel>))]
-         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(
-            int profileId,
-            [FromBody] MemberProfileRequestModel model)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Update(int profileId,[FromBody] MemberProfileRequestModel model)
         {
             if (profileId <= 0)
                 return BadRequest("profileId must be greater than zero.");
@@ -54,11 +54,16 @@ namespace MessoApp.Controllers
         }
 
         [HttpGet("profile")]
-        [Authorize("Member")]
+        [Authorize(Roles = "Member")]
         public async Task<IActionResult> GetMemberProfile()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return Ok(new {userIdClaim});
+            var profileIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(profileIdClaim, out int profileId) || profileId <= 0)
+            {
+                return BadRequest("Invalid or missing adminId.");
+            }
+            var result = await _memberService.GetMemberProfileAsyn(profileId);
+            return Ok(result);
         }
     }
 }

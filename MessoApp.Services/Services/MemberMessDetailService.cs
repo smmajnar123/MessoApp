@@ -12,9 +12,9 @@ namespace MessoApp.Services.Services
     public class MemberMessDetailService(IMemberMessDetailRepository memberMessDetailRepository) : IMemberMessDetailService
     {
         private readonly IMemberMessDetailRepository _memberMessDetailRepository = memberMessDetailRepository;
-        public async Task<List<MemberMessDetailResponseModel>> GetAllAsyn(int messId)
+        public async Task<MemberMessDetailResponseModel?> GetMemberMessDetailsAsync(int profileId)
         {
-            return await _memberMessDetailRepository.GetAllAsyn(messId);
+            return await _memberMessDetailRepository.GetMemberMessDetailsAsync(profileId);
         }
     }
 }

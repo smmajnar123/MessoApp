@@ -9,7 +9,7 @@ public partial class Mess
 
     public int AdminId { get; set; }
 
-    public string MessName { get; set; } = null!;
+    public string MessName { get; set; }=string.Empty;
 
     public string? MessAddress { get; set; }
 
