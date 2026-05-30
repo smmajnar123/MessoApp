@@ -5,17 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessoApp.Db.Data;
 
-public partial class MessDbContext : DbContext
+public partial class MessDbContext(DbContextOptions<MessDbContext> options) : DbContext(options)
 {
-    public MessDbContext()
-    {
-    }
-
-    public MessDbContext(DbContextOptions<MessDbContext> options)
-        : base(options)
-    {
-    }
-
     public virtual DbSet<Admin> Admins { get; set; }
 
     public virtual DbSet<AdminSubscriptionDetail> AdminSubscriptionDetails { get; set; }
@@ -28,9 +19,7 @@ public partial class MessDbContext : DbContext
 
     public virtual DbSet<Mess> Messes { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=GJSHD-0520\\SQLEXPRESS;Initial Catalog=TestMessDb;Integrated Security=True;TrustServerCertificate=True");
-
+   
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>

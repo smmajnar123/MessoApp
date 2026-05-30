@@ -7,6 +7,7 @@ using MessoApp.Repository.IRepository;
 using MessoApp.Repository.Repository;
 using MessoApp.Services.IServices;
 using MessoApp.Services.Services;
+using MessoApp.Shared.Common;
 using MessoApp.Validators.RequestValidator;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,8 @@ namespace MessoApp.Helper.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddDbContext<MessDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            AppSettings.ConnectionString = configuration.GetConnectionString("DefaultConnection") ?? "";
+            services.AddDbContext<MessDbContext>(options => options.UseSqlServer(AppSettings.ConnectionString));
             //validation
             services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssemblyContaining<MemberProfileRequestValidator>();

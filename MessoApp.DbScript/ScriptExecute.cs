@@ -16,10 +16,8 @@ namespace MessoApp.DbScript
                 Console.WriteLine($"Scripts folder not found: {scriptsFolder}");
                 return;
             }
-
             // Get all SQL files in the folder
             string[] sqlFiles = Directory.GetFiles(scriptsFolder, "*.sql");
-
             if (sqlFiles.Length == 0)
             {
                 Console.WriteLine($"No SQL files found in folder: {scriptsFolder}");
@@ -30,20 +28,16 @@ namespace MessoApp.DbScript
             {
                 using SqlConnection connection = new(connectionString);
                 connection.Open();
-
                 foreach (string file in sqlFiles)
                 {
                     Console.WriteLine($"Executing script: {Path.GetFileName(file)}");
                     string script = File.ReadAllText(file);
-
                     // Split script by GO statements
-                    string[] commands = script.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
-
+                    string[] commands = script.Split(["GO"], StringSplitOptions.RemoveEmptyEntries);
                     foreach (string commandText in commands)
                     {
                         if (string.IsNullOrWhiteSpace(commandText)) continue;
-
-                        using SqlCommand command = new SqlCommand(commandText, connection);
+                        using SqlCommand command = new(commandText, connection);
                         command.ExecuteNonQuery();
                     }
                     Console.WriteLine($"Finished: {Path.GetFileName(file)}");
