@@ -1,8 +1,8 @@
 ﻿using MessoApp.Db.Data;
 using MessoApp.Db.Models;
 using MessoApp.DTO.ResponseModels;
-using MessoApp.Helper.Common.Enums;
 using MessoApp.Repository.IRepository;
+using MessoApp.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace MessoApp.Repository.Repository

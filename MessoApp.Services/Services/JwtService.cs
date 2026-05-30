@@ -1,6 +1,6 @@
 ﻿using MessoApp.DTO.ResponseModels;
-using MessoApp.Helper.Common.Enums;
 using MessoApp.Services.IServices;
+using MessoApp.Shared.Enums;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;

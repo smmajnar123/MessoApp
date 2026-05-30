@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Repository", "Mess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Mapper", "MessoApp.Mapper\MessoApp.Mapper.csproj", "{99CE021A-038A-441F-B90F-C14FFCA2D689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Helper", "MessoApp.Helper\MessoApp.Helper.csproj", "{230724CE-CD67-4F3E-873A-2DE1C3576741}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.Shared", "MessoApp.Helper\MessoApp.Shared.csproj", "{230724CE-CD67-4F3E-873A-2DE1C3576741}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessoApp.DTO", "MessoApp.DTO\MessoApp.DTO.csproj", "{A1EA877B-BDFF-42A0-8A5F-58CAF117A47D}"
 EndProject

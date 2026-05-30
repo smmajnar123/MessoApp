@@ -1,4 +1,4 @@
-﻿using MessoApp.Helper.Common.Enums;
+﻿using MessoApp.Shared.Enums;
 
 namespace MessoApp.DTO.ResponseModels
 {

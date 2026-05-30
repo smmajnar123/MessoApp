@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessoApp.Helper\MessoApp.Helper.csproj" />
+    <ProjectReference Include="..\MessoApp.Helper\MessoApp.Shared.csproj" />
   </ItemGroup>
 
 </Project>

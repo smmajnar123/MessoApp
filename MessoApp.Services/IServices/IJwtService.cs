@@ -1,6 +1,6 @@
 ﻿using MessoApp.DTO.RequestModels;
 using MessoApp.DTO.ResponseModels;
-using MessoApp.Helper.Common.Enums;
+using MessoApp.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

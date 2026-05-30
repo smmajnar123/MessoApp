@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessoApp.Helper.Common.Enums
+namespace MessoApp.Shared.Enums
 {
     public enum Role
     {

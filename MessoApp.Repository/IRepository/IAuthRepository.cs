@@ -1,5 +1,5 @@
 ﻿using MessoApp.DTO.ResponseModels;
-using MessoApp.Helper.Common.Enums;
+using MessoApp.Shared.Enums;
 
 namespace MessoApp.Repository.IRepository
 {

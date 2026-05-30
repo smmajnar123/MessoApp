@@ -1,4 +1,4 @@
-﻿using MessoApp.Helper.Common.Enums;
+﻿using MessoApp.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
